@@ -28,16 +28,16 @@ async def conjugate_verb(verb: str) -> str:
     """
     try:
         prompt = f"""
-You are a Portuguese language expert. Given the Portuguese verb "{verb}" (in any form), provide ALL possible conjugations organized by tense and person.
+You are a Portuguese language expert helping Russian speakers learn Portuguese. Given the Portuguese verb "{verb}" (in any form), provide ALL possible conjugations organized by tense and person.
 
 Please format the response exactly like this example:
 
-**VERBO: {verb.upper()}**
+**ГЛАГОЛ: {verb.upper()}**
 
-**INFINITIVO:**
+**ИНФИНИТИВ:**
 • Infinitivo: [infinitive form]
 
-**PRESENTE DO INDICATIVO:**
+**НАСТОЯЩЕЕ ВРЕМЯ (PRESENTE DO INDICATIVO):**
 • Eu [conjugation]
 • Tu [conjugation]
 • Ele/Ela [conjugation]
@@ -45,7 +45,7 @@ Please format the response exactly like this example:
 • Vós [conjugation]
 • Eles/Elas [conjugation]
 
-**PRETÉRITO PERFEITO:**
+**ПРОСТОЕ ПРОШЕДШЕЕ (PRETÉRITO PERFEITO):**
 • Eu [conjugation]
 • Tu [conjugation]
 • Ele/Ela [conjugation]
@@ -53,7 +53,7 @@ Please format the response exactly like this example:
 • Vós [conjugation]
 • Eles/Elas [conjugation]
 
-**PRETÉRITO IMPERFEITO:**
+**НЕЗАВЕРШЕННОЕ ПРОШЕДШЕЕ (PRETÉRITO IMPERFEITO):**
 • Eu [conjugation]
 • Tu [conjugation]
 • Ele/Ela [conjugation]
@@ -61,7 +61,7 @@ Please format the response exactly like this example:
 • Vós [conjugation]
 • Eles/Elas [conjugation]
 
-**FUTURO DO PRESENTE:**
+**ПРОСТОЕ БУДУЩЕЕ (FUTURO DO PRESENTE):**
 • Eu [conjugation]
 • Tu [conjugation]
 • Ele/Ela [conjugation]
@@ -69,7 +69,7 @@ Please format the response exactly like this example:
 • Vós [conjugation]
 • Eles/Elas [conjugation]
 
-**CONDICIONAL:**
+**УСЛОВНОЕ НАКЛОНЕНИЕ (CONDICIONAL):**
 • Eu [conjugation]
 • Tu [conjugation]
 • Ele/Ela [conjugation]
@@ -77,7 +77,7 @@ Please format the response exactly like this example:
 • Vós [conjugation]
 • Eles/Elas [conjugation]
 
-**PRESENTE DO SUBJUNTIVO:**
+**СОСЛАГАТЕЛЬНОЕ НАКЛОНЕНИЕ (PRESENTE DO SUBJUNTIVO):**
 • Que eu [conjugation]
 • Que tu [conjugation]
 • Que ele/ela [conjugation]
@@ -85,20 +85,20 @@ Please format the response exactly like this example:
 • Que vós [conjugation]
 • Que eles/elas [conjugation]
 
-**IMPERATIVO:**
+**ПОВЕЛИТЕЛЬНОЕ НАКЛОНЕНИЕ (IMPERATIVO):**
 • Tu [conjugation]
 • Ele/Ela [conjugation]
 • Nós [conjugation]
 • Vós [conjugation]
 • Eles/Elas [conjugation]
 
-If the word is not a valid Portuguese verb, respond with: "❌ '{verb}' não parece ser um verbo português válido."
+If the word is not a valid Portuguese verb, respond with: "❌ '{verb}' не является действительным португальским глаголом."
 """
 
         response = client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[
-                {"role": "system", "content": "You are a Portuguese language expert specializing in verb conjugations."},
+                {"role": "system", "content": "You are a Portuguese language expert helping Russian speakers learn Portuguese. You specialize in verb conjugations and provide explanations in Russian."},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=1500,
@@ -109,7 +109,7 @@ If the word is not a valid Portuguese verb, respond with: "❌ '{verb}' não par
     
     except Exception as e:
         logger.error(f"Error conjugating verb '{verb}': {e}")
-        return f"❌ Erro ao conjugar o verbo '{verb}'. Tente novamente mais tarde."
+        return f"❌ Ошибка при спряжении глагола '{verb}'. Попробуйте снова позже."
 
 async def correct_phrase(phrase: str) -> str:
     """
@@ -117,30 +117,30 @@ async def correct_phrase(phrase: str) -> str:
     """
     try:
         prompt = f"""
-You are a Portuguese language teacher. Analyze the following Portuguese phrase and:
+You are a Portuguese language teacher helping Russian speakers learn Portuguese. Analyze the following Portuguese phrase and:
 
 1. If there are grammatical errors, provide the corrected version
-2. Explain what was wrong and why
+2. Explain what was wrong and why IN RUSSIAN
 3. If the phrase is already correct, just say it's correct
 
 Phrase to analyze: "{phrase}"
 
 Format your response like this:
 
-**FRASE ORIGINAL:** {phrase}
+**ИСХОДНАЯ ФРАЗА:** {phrase}
 
-**FRASE CORRIGIDA:** [corrected phrase or "A frase está correta!"]
+**ИСПРАВЛЕННАЯ ФРАЗА:** [corrected phrase or "Фраза верна!"]
 
-**EXPLICAÇÃO:**
-[Detailed explanation in Portuguese about what was wrong and why, or confirmation that it's correct. Include grammar rules if applicable.]
+**ОБЪЯСНЕНИЕ:**
+[Detailed explanation IN RUSSIAN about what was wrong and why, or confirmation that it's correct. Include grammar rules if applicable.]
 
-Be encouraging and educational in your explanations.
+Be encouraging and educational in your explanations. Write all explanations in Russian language.
 """
 
         response = client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[
-                {"role": "system", "content": "You are a helpful Portuguese language teacher who corrects grammar mistakes and explains them clearly in Portuguese."},
+                {"role": "system", "content": "You are a helpful Portuguese language teacher who corrects grammar mistakes and explains them clearly in Russian for Russian-speaking students."},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=1000,
@@ -151,7 +151,7 @@ Be encouraging and educational in your explanations.
     
     except Exception as e:
         logger.error(f"Error correcting phrase '{phrase}': {e}")
-        return f"❌ Erro ao corrigir a frase. Tente novamente mais tarde."
+        return f"❌ Ошибка при исправлении фразы. Попробуйте снова позже."
 
 async def process_text(text: str) -> str:
     """
@@ -160,7 +160,7 @@ async def process_text(text: str) -> str:
     text = text.strip()
     
     if not text:
-        return "❌ Por favor, envie um texto para processar."
+        return "❌ Пожалуйста, отправьте текст для обработки."
     
     # Check if it's likely a single verb
     if is_single_verb(text):

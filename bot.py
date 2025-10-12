@@ -70,7 +70,7 @@ class PortugueseHelperBot:
         except Exception as e:
             logger.error(f"Error processing message from user {user.id}: {e}")
             await update.message.reply_text(
-                "❌ Desculpe, ocorreu um erro ao processar sua mensagem. Tente novamente mais tarde.",
+                "❌ Извините, произошла ошибка при обработке вашего сообщения. Попробуйте снова позже.",
                 parse_mode=ParseMode.MARKDOWN
             )
     

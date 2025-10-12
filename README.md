@@ -1,12 +1,12 @@
-# TLG Bot Portuguese Helper 🇵🇹
+# TLG Bot Portuguese Helper 🇵🇹🇷🇺
 
-A Telegram bot that helps users learn Portuguese by providing verb conjugations and grammar corrections using OpenAI.
+A Telegram bot that helps Russian speakers learn Portuguese by providing verb conjugations and grammar corrections using OpenAI. The bot interface and explanations are in Russian.
 
 ## Description
 
-This bot provides two main features:
-1. **Verb Conjugation**: Send any Portuguese verb in any form, and get all conjugations across different tenses
-2. **Grammar Correction**: Send Portuguese phrases and get corrections with explanations
+This bot provides two main features for Russian speakers:
+1. **Verb Conjugation**: Send any Portuguese verb in any form, and get all conjugations across different tenses with Russian labels
+2. **Grammar Correction**: Send Portuguese phrases and get corrections with detailed explanations in Russian
 
 ## Features
 
@@ -19,9 +19,10 @@ This bot provides two main features:
   - Conditional (Condicional)
   - Present Subjunctive (Presente do Subjuntivo)
   - Imperative (Imperativo)
-- ✏️ **Grammar Correction**: Identifies and explains grammatical errors
+- ✏️ **Grammar Correction**: Identifies and explains grammatical errors in Russian
 - 🤖 **AI-Powered**: Uses OpenAI GPT models for accurate Portuguese language processing
-- 📱 **Easy to Use**: Simple Telegram interface
+- 📱 **Easy to Use**: Simple Telegram interface in Russian
+- 🇷🇺 **Russian Interface**: All explanations and interface messages in Russian language
 
 ## Installation
 
@@ -79,11 +80,11 @@ python bot.py
 
 **Verb Conjugation:**
 - Send: `falar`
-- Get: Complete conjugation table for the verb "falar"
+- Get: Complete conjugation table with Russian time labels (e.g., "НАСТОЯЩЕЕ ВРЕМЯ", "ПРОСТОЕ ПРОШЕДШЕЕ", etc.)
 
 **Grammar Correction:**
 - Send: `Ontem eu foi ao mercado`
-- Get: Corrected phrase with explanation
+- Get: Corrected phrase with detailed explanation in Russian
 
 ## Configuration
 

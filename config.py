@@ -32,33 +32,33 @@ logger = logging.getLogger(__name__)
 
 # Bot Messages
 WELCOME_MESSAGE = """
-🇵🇹 Olá! Bem-vindo ao assistente de português! 🇵🇹
+🇵🇹 Привет! Добро пожаловать в помощник португальского языка! 🇷🇺
 
-Eu posso ajudá-lo de duas formas:
+Я могу помочь вам двумя способами:
 
-1️⃣ **Conjugação de verbos**: Envie um verbo português em qualquer forma e eu mostrarei todas as conjugações.
-   Exemplo: "falar" ou "falou" ou "falarei"
+1️⃣ **Спряжение глаголов**: Отправьте португальский глагол в любой форме, и я покажу все спряжения.
+   Пример: "falar" или "falou" или "falarei"
 
-2️⃣ **Correção de frases**: Envie uma frase em português e eu a corrigirei se houver erros.
-   Exemplo: "Eu gosto muito de comer pizza"
+2️⃣ **Исправление фраз**: Отправьте фразу на португальском языке, и я исправлю ошибки с объяснениями.
+   Пример: "Eu gosto muito de comer pizza"
 
-Digite /help para ver esta mensagem novamente.
+Напишите /help чтобы увидеть это сообщение снова.
 """
 
 HELP_MESSAGE = """
-🆘 **Como usar o bot:**
+🆘 **Как использовать бота:**
 
-📝 **Para conjugar verbos:**
-- Digite qualquer forma de um verbo português
-- Exemplo: "correr", "corri", "correria"
+📝 **Для спряжения глаголов:**
+- Напишите любую форму португальского глагола
+- Пример: "correr", "corri", "correria"
 
-📝 **Para corrigir frases:**
-- Digite uma frase completa em português
-- Exemplo: "Ontem eu foi ao mercado"
+📝 **Для исправления фраз:**
+- Напишите полную фразу на португальском языке
+- Пример: "Ontem eu foi ao mercado"
 
-🔧 **Comandos disponíveis:**
-/start - Iniciar o bot
-/help - Mostrar esta ajuda
+🔧 **Доступные команды:**
+/start - Запустить бота
+/help - Показать эту справку
 
-Envie qualquer texto e eu tentarei identificar se é um verbo para conjugar ou uma frase para corrigir!
+Отправьте любой текст, и я попробую определить, это глагол для спряжения или фраза для исправления!
 """
