@@ -1,26 +1,32 @@
-# TLG Bot Portuguese Helper 🇵🇹🇷🇺
+# TLG Bot European Portuguese Helper 🇵🇹🇷🇺
 
-A Telegram bot that helps Russian speakers learn Portuguese by providing verb conjugations and grammar corrections using OpenAI. The bot interface and explanations are in Russian.
+A Telegram bot that helps Russian speakers learn **European Portuguese** by providing verb conjugations and advanced grammar corrections with special focus on prepositions using OpenAI. The bot interface and explanations are in Russian.
 
 ## Description
 
-This bot provides two main features for Russian speakers:
-1. **Verb Conjugation**: Send any Portuguese verb in any form, and get all conjugations across different tenses with Russian labels
-2. **Grammar Correction**: Send Portuguese phrases and get corrections with detailed explanations in Russian
+This bot specializes in **European Portuguese (português europeu)** and provides two main features for Russian speakers:
+1. **Verb Conjugation**: Send any Portuguese verb in any form, and get all conjugations in European Portuguese standard with Russian labels
+2. **Advanced Grammar Correction**: Send Portuguese phrases and get corrections with special focus on prepositions, detailed explanations in Russian, and European Portuguese standards
 
 ## Features
 
+- 🇵🇹 **European Portuguese Focus**: Uses exclusively European Portuguese standards, spelling, and grammar rules
 - 🔤 **Smart Text Analysis**: Automatically detects if input is a single verb or a phrase
-- 📚 **Complete Verb Conjugations**: Shows all tenses including:
-  - Present Indicative
+- 📚 **Complete Verb Conjugations**: Shows all tenses in European Portuguese standard including:
+  - Present Indicative (with tu/vós forms)
   - Past Perfect (Pretérito Perfeito)
   - Imperfect (Pretérito Imperfeito)
   - Future (Futuro do Presente)
   - Conditional (Condicional)
   - Present Subjunctive (Presente do Subjuntivo)
   - Imperative (Imperativo)
-- ✏️ **Grammar Correction**: Identifies and explains grammatical errors in Russian
-- 🤖 **AI-Powered**: Uses OpenAI GPT models for accurate Portuguese language processing
+- 🎯 **Advanced Preposition Analysis**: Specialized correction of Portuguese prepositions with:
+  - Double-checking of all prepositions (de, em, por, para, a, com, sobre, entre, etc.)
+  - Verification of preposition contractions (do, da, no, na, pelo, pela, ao, à, etc.)
+  - Analysis of verb-preposition combinations
+  - European vs Brazilian Portuguese differences explanation
+- ✏️ **Grammar Correction**: Comprehensive grammatical error identification with detailed explanations in Russian
+- 🤖 **AI-Powered**: Uses OpenAI GPT models with specialized European Portuguese prompts
 - 📱 **Easy to Use**: Simple Telegram interface in Russian
 - 🇷🇺 **Russian Interface**: All explanations and interface messages in Russian language
 
@@ -78,13 +84,17 @@ python bot.py
 
 ### Examples
 
-**Verb Conjugation:**
+**Verb Conjugation (European Portuguese):**
 - Send: `falar`
-- Get: Complete conjugation table with Russian time labels (e.g., "НАСТОЯЩЕЕ ВРЕМЯ", "ПРОСТОЕ ПРОШЕДШЕЕ", etc.)
+- Get: Complete conjugation table in European Portuguese standard with Russian labels and closed vowels (ê, ô)
 
-**Grammar Correction:**
-- Send: `Ontem eu foi ao mercado`
-- Get: Corrected phrase with detailed explanation in Russian
+**Advanced Grammar Correction with Preposition Analysis:**
+- Send: `Vou para o mercado comprar pão` or `Estou a estudar português`
+- Get: Detailed analysis including:
+  - Corrected phrase using European Portuguese standards
+  - Complete preposition analysis
+  - Explanation of European Portuguese vs Brazilian differences
+  - Grammar rules and usage tips
 
 ## Configuration
 

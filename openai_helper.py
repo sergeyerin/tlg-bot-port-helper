@@ -24,11 +24,16 @@ def is_single_verb(text: str) -> bool:
 
 async def conjugate_verb(verb: str) -> str:
     """
-    Get all conjugations of a Portuguese verb using OpenAI.
+    Get all conjugations of a Portuguese verb using OpenAI with European Portuguese focus.
     """
     try:
         prompt = f"""
-You are a Portuguese language expert helping Russian speakers learn Portuguese. Given the Portuguese verb "{verb}" (in any form), provide ALL possible conjugations organized by tense and person.
+You are an expert in European Portuguese (português europeu) helping Russian speakers learn Portuguese. Given the Portuguese verb "{verb}" (in any form), provide ALL possible conjugations organized by tense and person using EUROPEAN PORTUGUESE standards and spelling.
+
+IMPORTANT: Use European Portuguese conventions including:
+- Closed vowels (ê, ô) where appropriate
+- European Portuguese spelling and pronunciation patterns
+- Formal register with "tu" and "vós" forms
 
 Please format the response exactly like this example:
 
@@ -67,7 +72,7 @@ Please format the response exactly like this example:
 • Ele/Ela [conjugation]
 • Nós [conjugation]
 • Vós [conjugation]
-• Eles/Elas [conjugation]
+• Eles/Elas [conjugations]
 
 **УСЛОВНОЕ НАКЛОНЕНИЕ (CONDICIONAL):**
 • Eu [conjugation]
@@ -98,7 +103,7 @@ If the word is not a valid Portuguese verb, respond with: "❌ '{verb}' не я�
         response = client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[
-                {"role": "system", "content": "You are a Portuguese language expert helping Russian speakers learn Portuguese. You specialize in verb conjugations and provide explanations in Russian."},
+                {"role": "system", "content": "You are an expert in European Portuguese (português europeu) helping Russian speakers learn Portuguese. You specialize in verb conjugations using European Portuguese standards and provide explanations in Russian. Always double-check your conjugations for accuracy."},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=1500,
@@ -113,37 +118,58 @@ If the word is not a valid Portuguese verb, respond with: "❌ '{verb}' не я�
 
 async def correct_phrase(phrase: str) -> str:
     """
-    Correct Portuguese phrase and explain errors using OpenAI.
+    Correct Portuguese phrase with focus on prepositions using European Portuguese standards.
     """
     try:
         prompt = f"""
-You are a Portuguese language teacher helping Russian speakers learn Portuguese. Analyze the following Portuguese phrase and:
+You are an expert European Portuguese (português europeu) teacher helping Russian speakers learn Portuguese. Analyze the following Portuguese phrase with SPECIAL ATTENTION to prepositions and their correct usage.
 
-1. If there are grammatical errors, provide the corrected version
-2. Explain what was wrong and why IN RUSSIAN
-3. If the phrase is already correct, just say it's correct
+CRITICAL REQUIREMENTS:
+1. Use EUROPEAN PORTUGUESE standards and spelling (not Brazilian Portuguese)
+2. DOUBLE-CHECK all prepositions (de, em, por, para, a, com, sobre, entre, etc.) for accuracy
+3. Pay extra attention to preposition contractions (do, da, no, na, pelo, pela, ao, à, etc.)
+4. Verify verb-preposition combinations (phrasal verbs)
+5. Check for correct usage of "a" vs "para" vs "de" vs "em"
+6. Ensure proper agreement and placement of prepositions
 
 Phrase to analyze: "{phrase}"
+
+STEPS TO FOLLOW:
+1. First, identify ALL prepositions in the phrase
+2. Check each preposition for correctness in context
+3. Verify preposition contractions are properly formed
+4. Double-check verb-preposition combinations
+5. Provide corrected version if needed
 
 Format your response like this:
 
 **ИСХОДНАЯ ФРАЗА:** {phrase}
 
-**ИСПРАВЛЕННАЯ ФРАЗА:** [corrected phrase or "Фраза верна!"]
+**ИСПРАВЛЕННАЯ ФРАЗА:** [corrected phrase using European Portuguese OR "Фраза верна!"]
+
+**АНАЛИЗ ПРЕДЛОГОВ:**
+[List all prepositions found and verify their correctness]
 
 **ОБЪЯСНЕНИЕ:**
-[Detailed explanation IN RUSSIAN about what was wrong and why, or confirmation that it's correct. Include grammar rules if applicable.]
+[Detailed explanation IN RUSSIAN about:
+- What preposition errors were found (if any)
+- Why the corrections were made
+- Rules for proper preposition usage
+- European Portuguese vs Brazilian differences if relevant
+- Grammar rules that apply]
 
-Be encouraging and educational in your explanations. Write all explanations in Russian language.
+**ПРАВИЛО:** [Key grammar rule to remember, if applicable]
+
+Be thorough, encouraging and educational. Write all explanations in Russian language. Always double-check your corrections before providing the final answer.
 """
 
         response = client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[
-                {"role": "system", "content": "You are a helpful Portuguese language teacher who corrects grammar mistakes and explains them clearly in Russian for Russian-speaking students."},
+                {"role": "system", "content": "You are an expert European Portuguese teacher specializing in preposition corrections and grammar analysis. You help Russian-speaking students by providing detailed, accurate corrections with special focus on prepositions. Always double-check your corrections for accuracy and use European Portuguese standards. Provide thorough explanations in Russian."},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=1000,
+            max_tokens=1200,
             temperature=0.1
         )
         
